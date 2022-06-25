@@ -8,26 +8,23 @@ public class newOrderPopUp : MonoBehaviour
     public OrderManager orderManager;
     
     public GameObject NewOrder;
-    private int currentOrderIndex = 0;
 
+    private Coroutine co;
     void Start ()
     {
-        //NewOrder.SetActive(false);
-        ShowNewOrder(currentOrderIndex);
     }
     
     public void ShowNewOrder(int index)
     {
-        if (index >= OrderManager.currentOrderNum) return;
-
         if (OrderManager.orders[index].IsOrderActive())
         {
+            if(co!=null)
+            {
+                StopCoroutine(co);
+            }
             NewOrder.SetActive(true);
+            co = StartCoroutine(HidePopUp(5));
         }
-        
-
-        
-
         //if (OrderManager.orders[index].IsOrderCompleted())
         //{
         //    OrderText.SetActive(false);
@@ -35,7 +32,11 @@ public class newOrderPopUp : MonoBehaviour
     }
     void Update()
     {
-        ShowNewOrder(currentOrderIndex);
+    }
+    IEnumerator HidePopUp(float sec)
+    {
+        yield return new WaitForSeconds(sec);
+        NewOrder.SetActive(false);
     }
 
     

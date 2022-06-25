@@ -24,8 +24,14 @@ public class OrderWindow : MonoBehaviour
     }
     public void ShowNextOrder()
     {
+        if (OrderManager.GetActiveOrderNumber() <= 1 ) return;
         currentOrderIndex++;
         if (currentOrderIndex >= OrderManager.currentOrderNum) currentOrderIndex = 0;
+        while (!OrderManager.orders[currentOrderIndex].IsOrderActive())
+        {
+            currentOrderIndex++;
+            if (currentOrderIndex >= OrderManager.currentOrderNum) currentOrderIndex = 0;
+        }
         ShowOrder(currentOrderIndex);
     }
     public void ShowOrder(int index)
@@ -51,7 +57,7 @@ public class OrderWindow : MonoBehaviour
     }
     void Update()
     {
-        ShowOrder(currentOrderIndex);
+        //ShowOrder(currentOrderIndex);
     }
 
     

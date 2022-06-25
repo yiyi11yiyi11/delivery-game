@@ -11,16 +11,16 @@ public class OrderManager : MonoBehaviour
 
     public static int currentOrderNum = 0;
 
-    public GameObject OrderWindow;
+    //public GameObject OrderWindow;
 
-    public Canvas canvas;
+    //public Canvas canvas;
 
     public Vector3[] AddressPositions;
     public Transform PlayerPosition;
     public int adjustAmount = 2; // Player's position vs. address position
     public bool[] isArrived;
     public bool[] onTheWay;
-
+    public newOrderPopUp popUpManager;
 
     private void Awake()
     {
@@ -80,7 +80,8 @@ public class OrderManager : MonoBehaviour
             if (orders[i].IsOrderActive() || orders[i].IsOrderCompleted()) continue;
             if(Time.time>=orders[i].startTime)
             {
-              orders[i].HandleOrderStart();
+                orders[i].HandleOrderStart();
+                popUpManager.ShowNewOrder(i);
               //GameObject obj = Instantiate(OrderWindow, canvas.transform);
               //obj.GetComponent<OrderWindow>().OpenOrderWindow(orders[i]);
             }
