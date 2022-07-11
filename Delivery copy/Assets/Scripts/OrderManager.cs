@@ -21,6 +21,8 @@ public class OrderManager : MonoBehaviour
     public bool[] isArrived;
     public bool[] onTheWay;
     public newOrderPopUp popUpManager;
+    public pickedup pickUpManager;
+    public delivered deliverManager;
 
     private void Awake()
     {
@@ -101,6 +103,7 @@ public class OrderManager : MonoBehaviour
             if (isArrived[i] && !orders[i].IsArrivedRestaurant()) {
                 //picked up
                 orders[i].HandleOrderPickedup();
+                pickUpManager.ShowPickedUp(i);
                 AddressPositions[i] = orders[i].endLocation.transform.position;
                 isArrived[i] = false;
                 onTheWay[i] = true;
@@ -113,6 +116,7 @@ public class OrderManager : MonoBehaviour
             {
                 //picked up
                 orders[i].HandleOrderComplete();
+                deliverManager.ShowDelivered(i);
                 isArrived[i] = true;
                 onTheWay[i] = false;
             }
