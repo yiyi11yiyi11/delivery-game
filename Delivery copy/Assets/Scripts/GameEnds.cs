@@ -27,6 +27,7 @@ public class GameEnds : MonoBehaviour
     {
         if(isEnd)
         {
+            fading.SetActive(true);
             Color co = fading.GetComponent<Image>().color;
             co.a += Time.deltaTime/2;
             fading.GetComponent<Image>().color = co;
