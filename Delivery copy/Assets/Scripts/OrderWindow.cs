@@ -57,7 +57,7 @@ public class OrderWindow : MonoBehaviour
     }
     void Update()
     {
-        //ShowOrder(currentOrderIndex);
+        ShowOrder(currentOrderIndex);
     }
 
     

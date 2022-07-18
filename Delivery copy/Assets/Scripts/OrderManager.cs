@@ -23,6 +23,7 @@ public class OrderManager : MonoBehaviour
     public newOrderPopUp popUpManager;
     public pickedup pickUpManager;
     public delivered deliverManager;
+    public orderIcon iconManager;
 
     private void Awake()
     {
@@ -84,6 +85,7 @@ public class OrderManager : MonoBehaviour
             {
                 orders[i].HandleOrderStart();
                 popUpManager.ShowNewOrder(i);
+                iconManager.ShowIcon(i);
               //GameObject obj = Instantiate(OrderWindow, canvas.transform);
               //obj.GetComponent<OrderWindow>().OpenOrderWindow(orders[i]);
             }
@@ -117,6 +119,7 @@ public class OrderManager : MonoBehaviour
                 //picked up
                 orders[i].HandleOrderComplete();
                 deliverManager.ShowDelivered(i);
+                iconManager.CloseIcon(i);
                 isArrived[i] = true;
                 onTheWay[i] = false;
             }
