@@ -116,9 +116,11 @@ public class OrderManager : MonoBehaviour
         {
             if (isArrived[i] && orders[i].IsArrivedRestaurant())
             {
-                //picked up
+                if (!orders[i].IsOrderCompleted())
+                {
+                    deliverManager.ShowDelivered(i);
+                }
                 orders[i].HandleOrderComplete();
-                deliverManager.ShowDelivered(i);
                 iconManager.CloseIcon(i);
                 isArrived[i] = true;
                 onTheWay[i] = false;
