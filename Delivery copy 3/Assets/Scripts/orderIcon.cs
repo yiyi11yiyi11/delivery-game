@@ -10,7 +10,7 @@ public class orderIcon : MonoBehaviour
     public GameObject orderIconTo;
 
     public void ShowIcon(int index) {
-        if (OrderManager.orders[index].IsPickedUp())
+        if (OrderManager.orders[index].IsOrderActive())
         {
             orderIconFrom.SetActive(true);
             orderIconTo.SetActive(true);

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class OrderWindow : MonoBehaviour
 {
     public OrderManager orderManager;
-    //public OrderColorManager colorManager;
+    public OrderColorManager colorManager;
 
     public Text nameText;
     public Text addressFromText;
@@ -48,7 +48,8 @@ public class OrderWindow : MonoBehaviour
             rewardText.text = "$" + OrderManager.orders[index].orderReward.ToString();
             timeText.text = OrderManager.orders[index].currentRemainTIme.ToString("#0");
 
-            //colorManager.ShowOrderColor(index);
+            colorManager.CloseOrderColor();
+            colorManager.ShowOrderColor(index);
 
             OrderText.SetActive(true);
         }

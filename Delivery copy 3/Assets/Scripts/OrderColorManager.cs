@@ -22,8 +22,12 @@ public class OrderColorManager : MonoBehaviour
         colors[index].ShowColor(index);
     }
 
-    public void CloseOrderColor(int index)
+    public void CloseOrderColor()
     {
-        colors[index].CloseColor(index);
+        for(int i = 0;i<colors.Length;i++)
+        {
+            colors[i].CloseColor(i);
+        }
+       
     }
 }

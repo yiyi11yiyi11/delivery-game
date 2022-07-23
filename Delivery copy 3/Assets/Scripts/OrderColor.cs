@@ -10,7 +10,7 @@ public class OrderColor : MonoBehaviour
     public GameObject orderColorTo;
 
     public void ShowColor(int index) {
-        if (OrderManager.orders[index].IsPickedUp())
+        if (OrderManager.orders[index].IsOrderActive())
         {
             orderColorFrom.SetActive(true);
             orderColorTo.SetActive(true);
@@ -18,10 +18,7 @@ public class OrderColor : MonoBehaviour
     }
 
     public void CloseColor(int index) {
-        if (OrderManager.orders[index].IsOrderCompleted())
-        {
-            orderColorFrom.SetActive(false);
-            orderColorTo.SetActive(false);
-        }
+        orderColorFrom.SetActive(false);
+        orderColorTo.SetActive(false);
     }
 }
